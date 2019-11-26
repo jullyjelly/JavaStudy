@@ -19,3 +19,4 @@ class study
 		System.out.println(arr[2]);
 	}
 }
+
