@@ -62,14 +62,26 @@ public class BinaryTreeTraversal {
 			System.out.println(head.val);
 		}
 	}
-//	public static void postorderTraversal2(Node head) {
-//		if(head!=null) {
-//			Stack<Node> s=new Stack<Node>();
-//			while(head!=null) {
-//				
-//			}
-//		}
-//	}
+	public static void postorderTraversal2(Node head) {
+		if (head != null) {
+			Stack<Node> s1 = new Stack<Node>();
+			Stack<Node> s2 = new Stack<Node>();
+			s1.push(head);
+			while (!s1.isEmpty()) {
+				head = s1.pop();
+				s2.push(head);
+				if (head.left != null) {
+					s1.push(head.left);
+				}
+				if (head.right != null) {
+					s1.push(head.right);
+				}
+			}
+			while (!s2.isEmpty()) {
+				System.out.print(s2.pop().val + " ");
+			}
+		}
+	}
 	public static void main(String[] args) {
 		Node head1=new Node(1);
 		Node head2=new Node(2);
@@ -89,7 +101,7 @@ public class BinaryTreeTraversal {
 		head3.right=head6;
 		
 //		preorderTraversal2(head1);
-		inOrderTraversal2(head1);
-//		postorderTraversal(head1);
+//		inOrderTraversal2(head1);
+		postorderTraversal2(head1);
 	}
 }
