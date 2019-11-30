@@ -23,7 +23,7 @@ public class BinaryTreeTraversal {
 			s.push(head);
 			while(!s.empty()) {
 				head=s.pop();
-				System.out.println(head.val);
+				System.out.print(head.val+" ");
 				if(head.right!=null) {
 					s.push(head.right);
 				}
@@ -31,6 +31,7 @@ public class BinaryTreeTraversal {
 					s.push(head.left);
 				}
 			}
+			System.out.println();
 		}
 	}
 	public static void inOrderTraversal(Node head) {
@@ -49,10 +50,11 @@ public class BinaryTreeTraversal {
 				}
 				else {
 					head=s.pop();
-					System.out.println(head.val);
+					System.out.print(head.val+" ");
 					head=head.right;
 				}
 			}
+			System.out.println();
 		}
 	}
 	public static void postorderTraversal(Node head) {
@@ -63,23 +65,22 @@ public class BinaryTreeTraversal {
 		}
 	}
 	public static void postorderTraversal2(Node head) {
-		if (head != null) {
-			Stack<Node> s1 = new Stack<Node>();
-			Stack<Node> s2 = new Stack<Node>();
+		if(head!=null) {
+			Stack<Node> s1=new Stack<Node>();
+			Stack<Node> s2=new Stack<Node>();
 			s1.push(head);
-			while (!s1.isEmpty()) {
-				head = s1.pop();
+			while(!s1.empty()) {
+				head=s1.pop();
 				s2.push(head);
-				if (head.left != null) {
+				if(head.left!=null)
 					s1.push(head.left);
-				}
-				if (head.right != null) {
+				if(head.right!=null)
 					s1.push(head.right);
-				}
 			}
-			while (!s2.isEmpty()) {
-				System.out.print(s2.pop().val + " ");
+			while(!s2.empty()) {
+				System.out.print(s2.pop().val+" ");
 			}
+			System.out.println();
 		}
 	}
 	public static void main(String[] args) {
@@ -100,8 +101,8 @@ public class BinaryTreeTraversal {
 		head5.right=head8;
 		head3.right=head6;
 		
-//		preorderTraversal2(head1);
-//		inOrderTraversal2(head1);
+		preorderTraversal2(head1);
+		inOrderTraversal2(head1);
 		postorderTraversal2(head1);
 	}
 }
