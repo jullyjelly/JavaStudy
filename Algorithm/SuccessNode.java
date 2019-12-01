@@ -1,7 +1,5 @@
 package Algorithm;
 
-import java.util.*;
-
 public class SuccessNode {
 	public static class Node{
 		public int val;
@@ -14,30 +12,24 @@ public class SuccessNode {
 	}
 	public static Node findSuccessNode(Node head) {
 		if(head==null)
-			return null;
+			return head;
 		if(head.right!=null) {
-			Stack<Node> s1=new Stack<Node>();
-			Stack<Node> s2=new Stack<Node>();
 			head=head.right;
-			s1.push(head);
-			while(!s1.empty()) {
-				head=s1.pop();
-				s2.push(head);
-				if(head.left!=null)
-					s1.push(head.left);
-				if(head.right!=null)
-					s1.push(head.right);
+			while(head.left!=null) {
+				head=head.left;
 			}
-			return s2.pop();
+			return head;
 		}
-		while(head.parent!=null)
-			if(head.parent.left!=head) {
+		else {
+			while(head.parent!=null) {
+				if(head.parent.left==head) {
+					return head.parent;
+				}
 				head=head.parent;
 			}
-			else {
-				return head.parent;
-			}
-		return null;
+			return null;
+		}
+		
 	}
 	public static void main(String[] args) {
 		Node head1=new Node(1);
@@ -66,6 +58,6 @@ public class SuccessNode {
 		
 		head3.right=head6;
 		head6.parent=head3;
-		System.out.println(findSuccessNode(head7).val);
+		System.out.println(findSuccessNode(head3).val);
 	}
 }
