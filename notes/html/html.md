@@ -18,11 +18,14 @@ html是网页最基本的语言
     </body>
 </html>
 ```
+`<br/>`行结束标识  
 如今html一般只用来负责网页数据的标签封装，样式一般由css来完成  
 
 常用方法
 ----  
-可查阅参考手册[w3school](https://www.w3school.com.cn/html/index.asp)
+可查阅参考手册[w3school](https://www.w3school.com.cn/html/index.asp)  
+
+<a>
 ```html
 <html>
     <head>
@@ -57,11 +60,13 @@ html是网页最基本的语言
     </body>
 </html>
 ```
-[显示效果](file:///C:/Users/Jian/Documents/improtant/gitdemo/JavaStudy/notes/html/t1.html)
+[显示效果](t1.html)
 
 
 网页图像显示
 ----
+
+<a>
 ```html
 <html>
     <head>
@@ -77,8 +82,9 @@ html是网页最基本的语言
 ---
 `tr`行  
 `td`单元格  
-`th` 单元格居中
+`th` 单元格居中  
 
+<a>
 ```html
 <html>
     <head>
@@ -95,7 +101,7 @@ html是网页最基本的语言
                <td>23</td>
            </tr>
        </table>
-
+<a>
        <table>
            <tr>
                <th colspan='4'>壁纸合辑</th><!--合并单元格-->
@@ -123,9 +129,49 @@ html是网页最基本的语言
     </body>
 </html>
 ```
-[显示效果](file:///C:/Users/Jian/Documents/improtant/gitdemo/JavaStudy/notes/html/table.html)
+[显示效果](table.html)
 
 table的下一级是tbody，就算没写它也默认存在
 
 超链接
 ----
+<a>
+```html
+<html>
+    <head>
+        <title>超链接</title>
+    </head>
+    <body>
+        <a href="https://github.com/jullyjelly">jullyjelly的博客</a>
+        <!--这里必须加http，才能通过http协议解析该网址，否则默认为文件地址-->
+        <br/>
+        <a href="mailto:abc@qq.com">联系我们</a>
+        <!--可以启动右键发送系统-->
+        <br/>
+        <!--若href="thunder:\\....."则只能用迅雷下载（应用层协议）-->
+        <table>
+                <tr>
+                    <th colspan='4'>壁纸合辑</th>
+                </tr>
+                <tr>
+                    <td><a href="images/1.jpg"><image src="images/1.jpg" width="200" height="140"/></a></td>
+                    <td><a href="images/2.jpg"><image src="images/2.jpg" width="200" height="140"/></a></td>
+                    <td><a href="images/3.jpg"><image src="images/3.jpg" width="200" height="140"/></a></td>
+                    <td><a href="images/4.jpg"><image src="images/4.jpg" width="200" height="140"/></a></td>
+                </tr>
+                <tr>
+                    <td><a href="images/5.jpg"><image src="images/5.jpg" width="200" height="140"/></a></td>
+                    <td><a href="images/6.jpg"><image src="images/6.jpg" width="200" height="140"/></a></td>
+                    <td><a href="images/7.jpg"><image src="images/7.jpg" width="200" height="140"/></a></td>
+                    <td><a href="images/8.jpg"><image src="images/8.jpg" width="200" height="140"/></a></td>
+                 </tr>
+                 <tr>
+                    <td><a href="images/9.jpg"><image src="images/9.jpg" width="200" height="140"/></a></td>
+                    <td><a href="images/10.jpg"><image src="images/10.jpg" width="200" height="140"/></a></td>
+                    <td><a href="images/11.jpg"><image src="images/11.jpg" width="200" height="140"/></a></td>
+                    <td><a href="images/12.jpg"><image src="images/12.jpg" width="200" height="140"/></a></td>
+                </tr>
+            </table>
+    </body>
+</html>
+```
