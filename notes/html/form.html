@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form>
+		用户名称：<input name="usersname"/></br>
+        输入密码：<input type="password" name="password" /></br>
+        选择性别：<input type="radio" name="sex" value="nan">男
+        <input type="radio" name="sex" value="nv" checked>女</br>
+        <!--必须加value否则服务端无法读取数据，-->
+        <!--将两个通过name放在一个组里，就能够保证每次只选一个了-->
+        
+        选择技术：<input type="checkbox" name="tech" value="java"/>JAVA
+        <input type="checkbox" name="tech" value="html"/>HTML
+        <input type="checkbox" name="tech" value="python"/>PYTHON
+    </br>
+        自定义按钮:<input type="button" value="弹窗" onclick="alert('弹出新窗口')"/>
+    </br>
+        隐藏组件：<input type="hidden" name="jian" value="20"/>
+    </br>
+        选择文件：<input type="file" name="file" />
+    </br>
+        图片组件：<input type="image" src="images/3.jpg"/ height="20" width="30">
+    </br>
+        选择国家：
+        <select name="country">
+            <option value="none">--选择国家--</option>
+            <option value="cn" selected="selected">中国</option>
+            <option value="usa">美国</option>
+            <option value="jap">日本</option>
+            <option value="kora">韩国</option>
+        </select>
+    </br>
+        个人介绍：<textarea rows="5" cols="20"></textarea>
+    </br>
+        <input type="submit" value="提交"/>  <input type="reset"/>
+        <!--提交按钮将表单中的所有组件数据提交到指定服务器端-->
+    </br>
+	</form>
+</body>
+</html>

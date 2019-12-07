@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册表</title>
+</head>
+<body>
+    <form action="http://10.108.86.246:10005" method="GET">
+        <table border='1' bordercolor='blue' cellspacing='0' 
+        cellpadding='15' width='600'>
+            <tr>
+                <th colspan="2">注册页面</th>
+            </tr>
+            <tr>
+                <td>用户名(U):</td>
+                <td><input type="text" name="usersname"/></td>
+            </tr>
+            <tr>
+                <td>密码(P)：</td>
+                <td><input type="password" name="pass"/></td>
+            </tr>
+            <tr>
+                <td>确认密码：</td>
+                <td><input type="password" name="assertpass"/></td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td><input type="radio" name="sex"  value="nan"/> 男 
+                    <input type="radio" name="sex"  value="nv" checked/> 女</td>
+            </tr>
+            <tr>
+                <td>技术</td>
+                <td>
+                    <input type="checkbox" name="tech" value="java">JAVA  
+                    <input type="checkbox" name="tech" value="html">HTML
+                    <input type="checkbox" name="tech" value="css">CSS
+                </td>
+            </tr>
+            <tr>
+                <td>国家</td>
+                <td>
+                    <select name="country">
+                        <option value="none">--选择国家--</option>
+                        <option value="cn" selected>中国</option>
+                        <option value="usa">美国</option>
+                        <option value="en">英国</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input type="submit" value="提交">
+                    <input type="reset" >
+                </th>
+            </tr>
+
+        </table>
+    </form>
+</body>
+</html>
