@@ -23,4 +23,13 @@ html
         - input
     - a
 
-DHTML：多项技术综合体的简称，其中包含HTML，CSS，DOM，JavaScript四种技术（+xmlHTTPRequest=AJAX）
+DHTML：多项技术综合体的简称，其中包含HTML，CSS，DOM，JavaScript四种技术（+xmlHTTPRequest=AJAX）  
+- html：提供标签,用于封装数据，给数据加标记，它是最基础的部分  
+- css：提供样式，用于对标签中的数据进行丰富的效果展现  
+- dom：提供解析，将标记型文档以及文档中的内容都封装成了对象，在对象中定义了更多的属性和行为  
+- javascript：提供了逻辑性较强的程序设计内容，可以对对象的操作进行控制，负责的是页面的动态行为
+
+BOM：Browser Object Model浏览器对象模型。将浏览器以及浏览器中的一些内容封装成了对象 
+
+eg：  
+windows对象：代表浏览器中一个打开的窗口。（history，location，navigation，document等方法）
