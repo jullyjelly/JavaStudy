@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>
+
+        <head> </head>
+    </title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //将js按照面向对象的方式进行开发
+        /*
+        //描述Person，暂时不定义内容，相当于面向对象中的构造器
+        function Person(){
+            alert("person run");
+        }
+
+        //通过描述建立对象，使用new关键字
+        var p=new Person();
+
+        //给定义对象动态添加属性和行为
+        p.name="jian";
+        p.age=23;
+        p.show=function(){
+            alert(this.name+"....."+this.age);
+        };
+
+        p.show();
+        */
+        function Person(name,age){
+            this.name=name;//将构造中直接将对象的应该具备的属性添加完，并赋值
+            this.age=age;
+
+            this.setName=function(name){
+                this.name=name;
+            };
+            this.getName=function(){
+                return this.name;
+            };
+            //覆盖
+            this.toString=function(){
+                return "Person[name="+name+",age="+age+"]";
+            }
+            
+        }
+        var p=new Person("jian",23);
+        alert(p.getName()+"....."+p.age);
+        alert(p);//不写toSt时：[object Object]
+        //加上toString时：Person[name=jian,age=23]
+        for(x in p){
+            document.write("<pre>"+x+"="+p[x]+"</pre>"+"</br>");
+        };
+        alert(p.getName);
+
+    </script>
+</body>
+
+</html>

@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <script type="text/javascript" src="Stringtool.js"></script>
     <script>
         /*
         for (var x = 0; x < 3; x++) {
@@ -65,6 +66,68 @@
         var sum = getSum(4, 5);
         document.write(sum);
 
+
+        function meth() {
+            alert("method run");
+        }
+
+        var use = method;
+
+        document.write("</br>");
+        var a = 6;
+        function get() {
+            a = 3;
+        }
+        get();
+        document.write(a);
+
+        document.write("</br>");
+        var b = 5;
+        function get2(b) {
+            b = 3;
+        }
+        get2(b);
+        document.write(b);
+
+        document.write("</br>");
+
+        var arr = [4, 5, 2, 3, 6];
+        arr[2] = 50;
+        arr[6] = 100;
+        for (var i = 0; i < arr.length; i++) {
+            document.write(arr[i] + ",");
+        }
+
+        document.write("</br>");
+        arr = [3, 5, 6, 8, 1, 2, 6];
+        function getMax(arr) {
+            max = arr[0];
+            for (x = 0; x < arr.length; x++) {
+                if (arr[x] > max) {
+                    max = arr[x];
+                }
+            }
+            return max;
+        }
+        document.write(getMax(arr));
+
+        document.write("</br>");
+        Array.prototype.getMax = function () {
+            var max = this[0];
+            for (x = 0; x < this.length; x++) {
+                if (this[x] > max) {
+                    max = this[x];
+                }
+            }
+            return max;
+        }
+
+        arr = [23, 45, 1, 6, 7, 48, 3];
+        document.write(arr.getMax());
+
+
+        var s="    sdfs    ";
+        document.write(s.trim());
     </script>
 </body>
 
