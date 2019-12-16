@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>domdocumment</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function documentdemo(){
+                //想要操作页面标签中的数据，必须先获取到该标签对象
+
+                //通过id属性获取标签，返回该标签节点对象
+                var divnode=document.getElementById("divid");
+                //document.write(divnode);
+                // alert(divnode);
+                // alert(divnode.nodeName);//获取节点名称
+                // alert(divnode.innerHTML);//获取div中的文本
+
+                // divnode.innerHTML="new".fontcolor("red");
+                // var divnodes=document.getElementsByName("user");
+                // alert(divnodes.length);//1
+                // alert(divnodes);//[object NodeList]
+                // alert(divnodes[0].type);
+                // alert(divnodes[0].value);
+                // divnodes[0].value=divnode.innerHTML;
+
+                // var nodes=document.getElementsByTagName("div");
+                // for(var x=0;x<nodes.length;x++){
+                //     alert(nodes[x].innerHTML);
+                // }
+
+                var tablenode=document.getElementById("tableid");
+                var tablediv=tablenode.getElementsByTagName("div");
+                for(x=0;x<tablediv.length;x++){
+                    alert(tablediv[x].innerHTML);
+                }
+
+            }
+
+            function getNodeByLevel(){
+                //获取表格节点
+                var tableNode=document.getElementById("tableid");
+                // //获取表格节点的父节点
+                // var node1=tableNode.parentNode;
+                // alert(node1);
+                // alert(node1.nodeName);
+
+                // //获取表格节点的子节点
+                // var node2=tableNode.childNodes;
+                // alert(node2.length);
+                // for(var i=0;i<node2.length;i++){
+                //     alert(node2[i].nodeName);
+                // }
+                // var node3=tableNode.childNodes[1].childNodes;
+                // alert(node3.length);
+                // for(i=0;i<node3.length;i++){
+                //     alert(node3[i].nodeName);
+                // }
+
+                //获取表格节点的兄弟节点
+                var bro1=tableNode.nextSibling.nextSibling8;
+                alert(bro1.nodeName);
+
+                var bro2=tableNode.previousSibling.previousSibling;
+                alert(bro2.nodeName);
+
+            }
+        </script>
+
+        <!-- <input type="button" value="show document object" onclick="documentdemo()"> -->
+        <input type="button" value="show document object" onclick="getNodeByLevel()">
+        <div id="divid">div区域</div>
+        <table id="tableid">
+            <tr>
+                <td>table1</td>
+                <td>table2</td>
+            </tr>
+            <tr>
+                <td><div>table3</div></td>
+                <td><div>table4</div></td>
+            </tr>
+        </table>
+        <span>span区域</span>
+        <input type="text" name="user"/>
+        <a href="https://github.com/jullyjelly">jul's github</a>
+    </body>
+</html>
