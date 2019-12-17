@@ -195,26 +195,488 @@ function getNodeByLevel(){
 }
 
 ```
-### 案例：改变新闻字体，提供供用户选择字体大小的按钮
+## 案例：改变新闻字体，提供供用户选择字体大小的按钮
 
 1. 用html，通过标签定义页面基本结构
 2. 用css定义页面样式
 3. 确定事件源和事件
+    - 事件源：超链接
+    - 事件：点击事件  
+    注意：超链接本身带有默认事件，现在该超链接不需要默认事件处理，要取消。`href="javascript:void(0)"`  
+    没有了默认效果后，需要在事件源注册指定的事件
+4. 定义处理方式的具体内容
+    - 在处理方式中 ，必须要明确被处理的节点，获取该节点和对象，并调用其属性和行为，完成处理
 
 ```html
+<html>
+    <head>
+        <title>news</title>
+        <meta charset="UTF-8">
+        <style>
+            #textid{
+                border:dotted cornflowerblue 4px;
+                width:900px;
+                padding:20px;
+            }
+           /* 对新闻区域中超链接的未访问状态和访问后的状态设置相同的样式 */
+            #newsid a:link,#newsid a:visited{
+                color:darkgrey;
+                text-decoration-line: none;
 
+            }
+            #newsid a:hover{
+                color:darkred;
+                font-size: 25px;
+            }
+        </style>
+        <script>
+            function changefont(size,color){
+                var textnode=document.getElementById("textid");
+                textnode.style.fontSize=size;
+                textnode.style.color=color;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="newsid">
+            <h1>新闻标题</h1>
+            <a href="javascript:void(0)" onclick="changefont('24px','green')">大字体</a>  
+            <a href="javascript:void(0)" onclick="changefont('20px','yellow')">中字体</a>  
+            <a href="javascript:void(0)" onclick="changefont('16px','blue')">小字体</a>
+            <hr>
+            <div id="textid">
+                    研究的主要框架如下：
+                    第1章是引言
+                    该章节主要介绍本文的研究背景、研究内容、研究目的、研究方法、技术路线和研究意义及创新点。
+                    第2章是文献综述
+                    2.1选址理论
+                    2.2竞争选址理论
+                      2.2.1静态竞争
+                      静态竞争是指竞争对手已经存在市场中，新进入的竞争者即将进入市场，并且知道竞争对手的信息，
+                      新进入的竞争者进入市场后竞争对手并不采取相应的行动。
+                      2.2.2有预见的竞争
+                      带预见的竞是指潜在的竞争者尚未进入市场，但在新设施建成后将很快出现，因此领导者希望以一种
+                      定性的方式来定位设施，以便在追随者找到设施后最大程度的获取所占领的市场份额。竞争双方的决
+                      策可以视为Stacklberg游戏
+                    
+                
+            </div>
+        </div>
+    </body>
+</html>
 ```
+该方法仍存在一些问题，添加新样式会比较麻烦，样式和代码耦合性较强
 ```html
+<html>
+    <head>
+        <title>news</title>
+        <meta charset="UTF-8">
+        <style>
+            #textid{
+                border:dotted cornflowerblue 4px;
+                width:900px;
+                padding:20px;
+            }
+           /* 对新闻区域中超链接的未访问状态和访问后的状态设置相同的样式 */
+            #newsid a:link,#newsid a:visited{
+                color:darkgrey;
+                text-decoration-line: none;
 
+            }
+            #newsid a:hover{
+                color:darkred;
+                font-size: 25px;
+            }
+
+            .maxsize{
+                font-size: 26px;
+            }
+            .normsize{
+                font-size: 20px;
+            }
+            .minsize{
+                font-size: 14px;
+            }
+            /*也可以将以上部分存入一个style文件中然后@import url("style.css");*/
+        </style>
+        <script>
+            function changefont(size){
+                var textnode=document.getElementById("textid");
+                textnode.className=size;
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div id="newsid">
+            <h1>新闻标题</h1>
+            <a href="javascript:void(0)" onclick="changefont('maxsize')">大字体</a>  
+            <a href="javascript:void(0)" onclick="changefont('normsize')">中字体</a>  
+            <a href="javascript:void(0)" onclick="changefont('minsize')">小字体</a>
+            <hr>
+            <div id="textid" class="maxsize">
+                    .......
+            </div>
+        </div>
+    </body>
+</html>
 ```
+## 案例：表单校验
+1. 明确事件源和事件
+    - 事件源：表单中的组件
+    - 事件：失去焦点后就立刻校验
+2. 提示信息的展示方式
+    - 不要弹出信息，而是在组件的旁边显示文字或者图片，需要定义一个显示区域
 ```html
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function checkUser(){
+            var usernode=document.getElementsByName("user")[0];
+            var username=usernode.value;
+            // alert(username);
+            var spanpde=document.getElementById("userspan");
+            if(username=="abc"){
+                spanpde.innerHTML="√".fontcolor("green");
+            }
+            else{
+                spanpde.innerHTML="×".fontcolor("red");
+            }
+        }
+    </script>
+    <form action="">
+        用户名：<input type="text" name="user" onblur="checkUser()">
+        <span id="userspan"></span></br>
+    </form>
+</body>
+
+</html>
 ```
-```html
-
+用户名只能是4个字母
+```javascript
+var regex=new RegExp("[a-zA-Z]{4}");
+//var regex=new RegExp("\\b[a-zA-Z]{4}\\b");
+//var regex=new RegExp("^[a-zA-Z]{4}$");
+if(regex.test(username)){
+    spanpde.innerHTML="√".fontcolor("green");
+}
+else{
+    spanpde.innerHTML="×".fontcolor("red");
+}
 ```
+校验表单，使得用户名输入错误时无法提交  
+提交按钮上默认有提交事件，将form组件中的name和value都提交到服务器端  
+在表单中，若是`onsubmit="return false"`则不默认提交
 ```html
+<html>
 
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function checkUser(){
+            var flag=false;
+            var usernode=document.getElementsByName("user")[0];
+            var username=usernode.value;
+            var spanpde=document.getElementById("userspan");
+            //对用户名进行正则表达式判断
+            var regex=new RegExp("\\b[a-zA-Z]{4}\\b");
+            if(regex.test(username)){
+                spanpde.innerHTML="√".fontcolor("green");
+                flag=true;
+            }
+            else{
+                spanpde.innerHTML="×".fontcolor("red");
+                flag=false;
+            }
+            
+            return flag;
+        }
+        
+    </script>
+    <form onsubmit="return checkUser()">//************
+        用户名：<input type="text" name="user" onblur="checkUser()">
+        <span id="userspan"></span></br>
+        <input type="submit" value="提交">
+    </form>
+</body>
+
+</html>
+```
+自定义提交
+```html
+<script type="text/javascript">
+function myCheckForm(){
+    var formnode=document.getElementById("formid");//获取表单对象
+    if(checkUser()){
+        formnode.submit();
+    }
+}
+</script>
+<form id="formid" onsubmit="return checkUser()">
+        用户名：<input type="text" name="user" onblur="checkUser()">
+        <span id="userspan"></span></br>
+        <input type="submit" value="提交">
+    </form>
+    <hr>
+    <input type="button" value="自定义提交" onclick="myCheckForm()"/>
+```
+完整代码
+```html
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function checkUser(){
+            var flag=false;
+            var usernode=document.getElementsByName("user")[0];
+            var username=usernode.value;
+            var spanpde=document.getElementById("userspan");
+            //对用户名进行正则表达式判断
+            var regex=new RegExp("\\b[a-zA-Z]{4}\\b");
+            if(regex.test(username)){
+                spanpde.innerHTML="√".fontcolor("green");
+                flag=true;
+            }
+            else{
+                spanpde.innerHTML="×".fontcolor("red");
+                flag=false;
+            }
+            
+            return flag;
+        }
+        function myCheckForm(){
+            var formnode=document.getElementById("formid");
+            if(checkUser()&&checkpsw()){
+                formnode.submit();
+            }
+        }
+
+        function checkpsw(){
+            var fpsw=false;
+            var pswnode=document.getElementsByName("psw")[0];
+            var pswvalue=pswnode.value;
+            var pswspannode=document.getElementById("pswspan");
+            
+            var pswregex=new RegExp("^[A-Z][a-zA-Z0-9,\\.]{3,16}");
+            if(pswregex.test(pswvalue)){
+                pswspannode.innerHTML="√".fontcolor("green");
+                fpsw=true;
+            }
+            else{
+                pswspannode.innerHTML="×".fontcolor("red");
+                fpsw=false;
+            }
+            return fpsw;
+        }
+        function checkForm(){
+            if(checkUser()&&checkpsw()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+    </script>
+    <form id="formid" onsubmit="return checkForm()">
+        用户名称：<input type="text" name="user" onblur="checkUser()">
+        <span id="userspan"></span></br>
+        输入密码：<input type="password" name="psw" onblur="checkpsw()">
+        <span id="pswspan" ></span></br>
+        <input type="submit" value="提交">
+    </form>
+    <hr>
+    <input type="button" value="自定义提交" onclick="myCheckForm()"/>
+</body>
+
+</html>
+```
+以上部分的`checkUser()`和`checkpsw()`代码大量重复，为了提高代码复用性，写一个check函数
+```html
+<script type="text/javascript">
+
+    function check(name,spanid,regex){
+        var flag=false;
+        var node=document.getElementsByName(name)[0];
+        var value=node.value;
+
+        var spannode=document.getElementById(spanid);
+        if(regex.test(value)){
+            spannode.innerHTML="√".fontcolor("green");
+            flag=true;
+        }
+        else{
+            spannode.innerHTML="×".fontcolor("red");
+            flag=false;
+        }
+        return flag;
+    }
+    function checkUser(){
+        check("user","userspan",new RegExp("\\b[a-zA-Z]{4}\\b"));
+    }
+    
+    function checkpsw(){
+        check("psw","pswspan",new RegExp("^[A-Z][a-zA-Z0-9,\\.]{3,16}"));
+    }   
+</script>
+```
+
+完整代码：
+```html
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        function check(name,spanid,regex){
+            var flag=false;
+            var node=document.getElementsByName(name)[0];
+            var value=node.value;
+
+            var spannode=document.getElementById(spanid);
+            if(regex.test(value)){
+                spannode.innerHTML="√".fontcolor("green");
+                flag=true;
+            }
+            else{
+                spannode.innerHTML="×".fontcolor("red");
+                flag=false;
+            }
+            
+            return flag;
+        }
+        function checkUser(){
+            return check("user","userspan",new RegExp("\\b[a-zA-Z]{4}\\b"));
+        }
+        
+        
+        function checkpsw(){
+            return check("psw","pswspan",new RegExp("[a-zA-Z0-9]{3,16}"));
+        }
+        
+        function checkasp(){
+            var flag=false;
+            var node1=document.getElementsByName("psw")[0];
+            var value1=node1.value;
+
+            var node2=document.getElementsByName("assertpsw")[0];
+            var value2=node2.value;
+
+            var spannode=document.getElementById("asspan");
+            if(value1==value2){
+                spannode.innerHTML="√".fontcolor("green");
+                flag=true;
+            }
+            else{
+                spannode.innerHTML="×".fontcolor("red");
+                flag=false;
+            }
+            return flag;
+        }
+        function checkmail(){
+            return check("mail","mailspan",new RegExp("^\\w+@\\w+.\\w+$"));
+        }
+        function checkSex(){
+            var flag=false;
+            var radionodes=document.getElementsByName("sex");
+            for(var x=0;x<radionodes.length;x++){
+                if(radionodes[x].checked){
+                    flag= true;
+                }
+            }
+            var sexspan=document.getElementById("sexspan");
+            if(!flag){
+                sexspan.innerHTML="必须选择性别才可以提交".fontcolor("red");
+            }
+            return flag;
+            
+        }
+        function checkcountry(){
+            var falg=false;
+            var selectnode=document.getElementsByName("country")[0];
+            var optnodes=selectnode.options;
+            //获取下拉菜单中选择的国家
+            //alert(optnodes[selectnode.selectedIndex].innerHTML);
+            //下拉菜单的值不是none就可以提交
+            var val=optnodes[selectnode.selectedIndex].value;
+            if(val!="none"){
+                flag=true;
+            }
+            else{
+                flag=false;
+                var counspannode=document.getElementById("countryspan");
+                counspannode.innerHTML="请选择国家".fontcolor("red");
+            }
+            return flag;
+        }
+
+        function myCheckForm(){
+            var formnode=document.getElementById("formid");
+            if(checkUser()&&checkpsw()&&checkasp()&&checkmail()&&checkSex()&&checkcountry()){
+                // if(checkcountry()){
+                formnode.submit();
+            }
+        }
+
+        function checkForm(){
+            if(checkUser()&&checkpsw()&&checkasp()&&checkmail()&&checkSex()&&checkcountry()){
+                // if(checkSex()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+    </script>
+    <form id="formid" onsubmit="return checkForm()">
+        用户名称：<input type="text" name="user" onblur="checkUser()">
+        <span id="userspan"></span></br>
+        输入密码：<input type="password" name="psw" onblur="checkpsw()">
+        <span id="pswspan" ></span></br>
+        确认密码：<input type="password" name="assertpsw" onblur="checkasp()">
+        <span id="asspan" ></span></br>
+        电子邮件：<input type="text" name="mail" onblur="checkmail()">
+        <span id="mailspan" ></span></br>
+        选择性别：<input type="radio" name="sex" value="man">男  
+        <input type="radio" name="sex" value="woman">女
+        <span id="sexspan" ></span></br>
+        选择国家：
+        <select name="country" onchange="checkcountry()">
+            <option value="none">--选择国家--</option>
+            <option value="cn">中国</option>
+            <option value="usa">美国</option>
+            <option value="en">英国</option>
+        </select>
+        <span id="countryspan" ></span></br></br>
+        <input type="submit" value="提交">
+    </form>
+    <hr>
+    <input type="button" value="自定义提交" onclick="myCheckForm()"/>
+</body>
+
+</html>
 ```
 ```html
 
