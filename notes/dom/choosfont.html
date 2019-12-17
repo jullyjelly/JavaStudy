@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>news</title>
+        <meta charset="UTF-8">
+        <style>
+            @import url("style.css");
+        </style>
+        <script>
+            function changefont(size){
+                var textnode=document.getElementById("textid");
+                textnode.className=size;
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div id="newsid">
+            <h1>新闻标题</h1>
+            <a href="javascript:void(0)" onclick="changefont('maxsize')">大字体</a>  
+            <a href="javascript:void(0)" onclick="changefont('normsize')">中字体</a>  
+            <a href="javascript:void(0)" onclick="changefont('minsize')">小字体</a>
+            <hr>
+            <div id="textid" class="maxsize">
+                    研究的主要框架如下：
+                    第1章是引言
+                    该章节主要介绍本文的研究背景、研究内容、研究目的、研究方法、技术路线和研究意义及创新点。
+                    第2章是文献综述
+                    2.1选址理论
+                    2.2竞争选址理论
+                      2.2.1静态竞争
+                      静态竞争是指竞争对手已经存在市场中，新进入的竞争者即将进入市场，并且知道竞争对手的信息，
+                      新进入的竞争者进入市场后竞争对手并不采取相应的行动。
+                      2.2.2有预见的竞争
+                      带预见的竞是指潜在的竞争者尚未进入市场，但在新设施建成后将很快出现，因此领导者希望以一种
+                      定性的方式来定位设施，以便在追随者找到设施后最大程度的获取所占领的市场份额。竞争双方的决
+                      策可以视为Stacklberg游戏
+                    
+                
+            </div>
+        </div>
+    </body>
+</html>

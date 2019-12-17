@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        function check(name,spanid,regex){
+            var flag=false;
+            var node=document.getElementsByName(name)[0];
+            var value=node.value;
+
+            var spannode=document.getElementById(spanid);
+            if(regex.test(value)){
+                spannode.innerHTML="√".fontcolor("green");
+                flag=true;
+            }
+            else{
+                spannode.innerHTML="×".fontcolor("red");
+                flag=false;
+            }
+            
+            return flag;
+        }
+        function checkUser(){
+            return check("user","userspan",new RegExp("\\b[a-zA-Z]{4}\\b"));
+        }
+        
+        
+        function checkpsw(){
+            return check("psw","pswspan",new RegExp("[a-zA-Z0-9]{3,16}"));
+        }
+        
+        function checkasp(){
+            var flag=false;
+            var node1=document.getElementsByName("psw")[0];
+            var value1=node1.value;
+
+            var node2=document.getElementsByName("assertpsw")[0];
+            var value2=node2.value;
+
+            var spannode=document.getElementById("asspan");
+            if(value1==value2){
+                spannode.innerHTML="√".fontcolor("green");
+                flag=true;
+            }
+            else{
+                spannode.innerHTML="×".fontcolor("red");
+                flag=false;
+            }
+            return flag;
+        }
+        function checkmail(){
+            return check("mail","mailspan",new RegExp("^\\w+@\\w+.\\w+$"));
+        }
+        function checkSex(){
+            var flag=false;
+            var radionodes=document.getElementsByName("sex");
+            for(var x=0;x<radionodes.length;x++){
+                if(radionodes[x].checked){
+                    flag= true;
+                }
+            }
+            var sexspan=document.getElementById("sexspan");
+            if(!flag){
+                sexspan.innerHTML="必须选择性别才可以提交".fontcolor("red");
+            }
+            return flag;
+            
+        }
+        function checkcountry(){
+            var falg=false;
+            var selectnode=document.getElementsByName("country")[0];
+            var optnodes=selectnode.options;
+            //获取下拉菜单中选择的国家
+            //alert(optnodes[selectnode.selectedIndex].innerHTML);
+            //下拉菜单的值不是none就可以提交
+            var val=optnodes[selectnode.selectedIndex].value;
+            if(val!="none"){
+                flag=true;
+            }
+            else{
+                flag=false;
+                var counspannode=document.getElementById("countryspan");
+                counspannode.innerHTML="请选择国家".fontcolor("red");
+            }
+            return flag;
+        }
+
+        function myCheckForm(){
+            var formnode=document.getElementById("formid");
+            if(checkUser()&&checkpsw()&&checkasp()&&checkmail()&&checkSex()&&checkcountry()){
+                // if(checkcountry()){
+                formnode.submit();
+            }
+        }
+
+        function checkForm(){
+            if(checkUser()&&checkpsw()&&checkasp()&&checkmail()&&checkSex()&&checkcountry()){
+                // if(checkSex()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+    </script>
+    <form id="formid" onsubmit="return checkForm()">
+        用户名称：<input type="text" name="user" onblur="checkUser()">
+        <span id="userspan"></span></br>
+        输入密码：<input type="password" name="psw" onblur="checkpsw()">
+        <span id="pswspan" ></span></br>
+        确认密码：<input type="password" name="assertpsw" onblur="checkasp()">
+        <span id="asspan" ></span></br>
+        电子邮件：<input type="text" name="mail" onblur="checkmail()">
+        <span id="mailspan" ></span></br>
+        选择性别：<input type="radio" name="sex" value="man">男  
+        <input type="radio" name="sex" value="woman">女
+        <span id="sexspan" ></span></br>
+        选择国家：
+        <select name="country" onchange="checkcountry()">
+            <option value="none">--选择国家--</option>
+            <option value="cn">中国</option>
+            <option value="usa">美国</option>
+            <option value="en">英国</option>
+        </select>
+        <span id="countryspan" ></span></br></br>
+        <input type="submit" value="提交">
+    </form>
+    <hr>
+    <input type="button" value="自定义提交" onclick="myCheckForm()"/>
+</body>
+
+</html>

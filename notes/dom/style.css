@@ -1,0 +1,25 @@
+#textid{
+    border:dotted cornflowerblue 4px;
+    width:900px;
+    padding:20px;
+}
+/* 对新闻区域中超链接的未访问状态和访问后的状态设置相同的样式 */
+#newsid a:link,#newsid a:visited{
+    color:darkgrey;
+    text-decoration-line: none;
+
+}
+#newsid a:hover{
+    color:darkred;
+    font-size: 25px;
+}
+
+.maxsize{
+    font-size: 26px;
+}
+.normsize{
+    font-size: 20px;
+}
+.minsize{
+    font-size: 14px;
+}
