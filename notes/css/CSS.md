@@ -102,7 +102,7 @@ div {
 
  + 1.css
  ```css
- @import url("div.css");
+@import url("div.css");
 @import url("span.css");
 ```
 + span.css
