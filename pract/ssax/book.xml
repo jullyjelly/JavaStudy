@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- <!DOCTYPE 书架 SYSTEM "book.dtd"> --><书架>
+	<书>
+		<书名>javaweb</书名>
+		<作者 id="12">aa</作者>
+		<售价>59</售价>
+	</书>
+	<书>
+		<书名>java</书名>
+		<作者>cg</作者>
+		<售价 type="rmb">ty</售价>
+	</书>
+</书架>
